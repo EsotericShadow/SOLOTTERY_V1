@@ -1,0 +1,713 @@
+{
+  "address": "58Tp7nzzrUej7RTdWGSavSdGp1YHArexN19pYFnTABxv",
+  "metadata": {
+    "name": "solana_lottery_contract",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "conduct_draw",
+      "discriminator": [
+        195,
+        212,
+        71,
+        250,
+        198,
+        55,
+        61,
+        192
+      ],
+      "accounts": [
+        {
+          "name": "lottery_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "lottery_round",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  114,
+                  111,
+                  117,
+                  110,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "lottery_config.current_lottery_round_id",
+                "account": "LotteryConfig"
+              }
+            ]
+          }
+        },
+        {
+          "name": "slot_hashes",
+          "address": "SysvarS1otHashes111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "distribute_prizes",
+      "discriminator": [
+        154,
+        99,
+        201,
+        93,
+        82,
+        104,
+        73,
+        232
+      ],
+      "accounts": [
+        {
+          "name": "lottery_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "lottery_round",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  114,
+                  111,
+                  117,
+                  110,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "lottery_config.current_lottery_round_id",
+                "account": "LotteryConfig"
+              }
+            ]
+          }
+        },
+        {
+          "name": "dev_fee_receiver",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "enter_lottery",
+      "discriminator": [
+        252,
+        72,
+        239,
+        78,
+        58,
+        56,
+        149,
+        231
+      ],
+      "accounts": [
+        {
+          "name": "lottery_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "lottery_round",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  114,
+                  111,
+                  117,
+                  110,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "lottery_config.current_lottery_round_id",
+                "account": "LotteryConfig"
+              }
+            ]
+          }
+        },
+        {
+          "name": "participant",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_config",
+      "discriminator": [
+        208,
+        127,
+        21,
+        1,
+        194,
+        190,
+        196,
+        70
+      ],
+      "accounts": [
+        {
+          "name": "lottery_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "dev_fee_receiver",
+          "type": "pubkey"
+        },
+        {
+          "name": "entry_fee_lamports",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "start_new_lottery_round",
+      "discriminator": [
+        222,
+        129,
+        3,
+        5,
+        72,
+        178,
+        76,
+        242
+      ],
+      "accounts": [
+        {
+          "name": "lottery_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "lottery_round",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  114,
+                  111,
+                  117,
+                  110,
+                  100
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "next_round_id_arg"
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "draw_timestamp_offset_seconds",
+          "type": "i64"
+        },
+        {
+          "name": "next_round_id_arg",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "update_config",
+      "discriminator": [
+        29,
+        158,
+        252,
+        191,
+        10,
+        83,
+        219,
+        99
+      ],
+      "accounts": [
+        {
+          "name": "lottery_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  111,
+                  116,
+                  116,
+                  101,
+                  114,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_dev_fee_receiver",
+          "type": {
+            "option": "pubkey"
+          }
+        },
+        {
+          "name": "new_entry_fee_lamports",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "new_is_paused",
+          "type": {
+            "option": "bool"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "LotteryConfig",
+      "discriminator": [
+        174,
+        54,
+        184,
+        175,
+        81,
+        20,
+        237,
+        24
+      ]
+    },
+    {
+      "name": "LotteryRound",
+      "discriminator": [
+        35,
+        19,
+        255,
+        226,
+        193,
+        47,
+        229,
+        149
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "UnauthorizedAdmin",
+      "msg": "Unauthorized: Signer is not the admin."
+    },
+    {
+      "code": 6001,
+      "name": "LotteryPaused",
+      "msg": "Lottery is currently paused."
+    },
+    {
+      "code": 6002,
+      "name": "NumericOverflow",
+      "msg": "Numeric operation overflowed."
+    },
+    {
+      "code": 6003,
+      "name": "LotteryRoundNotActive",
+      "msg": "Lottery round is not active for entries/draw."
+    },
+    {
+      "code": 6004,
+      "name": "LotteryRoundStillActive",
+      "msg": "Lottery round is still active (draw not conducted or flag not set)."
+    },
+    {
+      "code": 6005,
+      "name": "LotteryDrawTimePassed",
+      "msg": "Lottery draw time has already passed for this round (for entry)."
+    },
+    {
+      "code": 6006,
+      "name": "ParticipantAlreadyEntered",
+      "msg": "Participant has already entered this lottery round."
+    },
+    {
+      "code": 6007,
+      "name": "IncorrectLotteryRound",
+      "msg": "The provided lottery round account is not the current active round."
+    },
+    {
+      "code": 6008,
+      "name": "WinnersAlreadyDrawn",
+      "msg": "Winners have already been drawn for this round."
+    },
+    {
+      "code": 6009,
+      "name": "DrawTimeNotReached",
+      "msg": "Draw time has not yet been reached for this round."
+    },
+    {
+      "code": 6010,
+      "name": "NotEnoughParticipants",
+      "msg": "Not enough participants to conduct the draw (minimum 5 required)."
+    },
+    {
+      "code": 6011,
+      "name": "WinnerSelectionFailed",
+      "msg": "Failed to select unique winners after multiple attempts."
+    },
+    {
+      "code": 6012,
+      "name": "PrizesAlreadyDistributed",
+      "msg": "Prizes have already been distributed for this round."
+    },
+    {
+      "code": 6013,
+      "name": "WinnersNotYetDrawn",
+      "msg": "Winners have not yet been drawn for this round."
+    },
+    {
+      "code": 6014,
+      "name": "WinnerNotSet",
+      "msg": "Main winner not set in lottery round account."
+    },
+    {
+      "code": 6015,
+      "name": "IncorrectNumberOfWinnersSet",
+      "msg": "Incorrect number of other winners set in lottery round account."
+    },
+    {
+      "code": 6016,
+      "name": "IncorrectNumberOfWinnerAccounts",
+      "msg": "Incorrect number of winner accounts provided for prize distribution."
+    },
+    {
+      "code": 6017,
+      "name": "IncorrectMainWinnerAccount",
+      "msg": "Provided main winner account does not match stored main winner."
+    },
+    {
+      "code": 6018,
+      "name": "IncorrectOtherWinnerAccount",
+      "msg": "Provided other winner account does not match stored other winner."
+    },
+    {
+      "code": 6019,
+      "name": "IncorrectDevFeeReceiver",
+      "msg": "Dev fee receiver account does not match configured address."
+    },
+    {
+      "code": 6020,
+      "name": "ZeroPotAmount",
+      "msg": "Total pot amount is zero, cannot distribute prizes."
+    },
+    {
+      "code": 6021,
+      "name": "DistributionExceedsPot",
+      "msg": "Calculated prize distribution exceeds total pot amount."
+    },
+    {
+      "code": 6022,
+      "name": "IncorrectNextRoundIdArg",
+      "msg": "The provided next_round_id argument does not match the expected next round ID."
+    }
+  ],
+  "types": [
+    {
+      "name": "LotteryConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin_key",
+            "type": "pubkey"
+          },
+          {
+            "name": "dev_fee_receiver",
+            "type": "pubkey"
+          },
+          {
+            "name": "entry_fee_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "is_paused",
+            "type": "bool"
+          },
+          {
+            "name": "current_lottery_round_id",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LotteryRound",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "round_id",
+            "type": "u64"
+          },
+          {
+            "name": "start_timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "draw_timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "total_pot_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "participants",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "is_active",
+            "type": "bool"
+          },
+          {
+            "name": "winners_drawn",
+            "type": "bool"
+          },
+          {
+            "name": "prizes_distributed",
+            "type": "bool"
+          },
+          {
+            "name": "main_winner",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "other_winners",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "randomness_seed",
+            "type": {
+              "option": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
